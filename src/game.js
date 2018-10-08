@@ -8,6 +8,8 @@ const GAME_SPEED_FAST = 120;
 const GAME_SPEED_NORMAL = 60;
 const GAME_SPEED_SLOW = 30;
 
+var gameSpeed = 2;
+
 // Disables right click context menu.
 window.addEventListener("contextmenu", function(e) {
 	e.preventDefault();
@@ -29,10 +31,10 @@ document.addEventListener("keypress", function(e) {
 	}
 
 	// Game Speed Settings
-	if (e.key === "1") { tickLength = 1000 / GAME_SPEED_SLOW; }
-	if (e.key === "2") { tickLength = 1000 / GAME_SPEED_NORMAL; }
-	if (e.key === "3") { tickLength = 1000 / GAME_SPEED_FAST;}
-	if (e.key === "3") { tickLength = 1000 / GAME_SPEED_SUPERMAN;}
+	if (e.key === "1") { tickLength = 1000 / GAME_SPEED_SLOW; gameSpeed = 1; }
+	if (e.key === "2") { tickLength = 1000 / GAME_SPEED_NORMAL; gameSpeed = 2; }
+	if (e.key === "3") { tickLength = 1000 / GAME_SPEED_FAST; gameSpeed = 3; }
+	if (e.key === "4") { tickLength = 1000 / GAME_SPEED_SUPERMAN; gameSpeed = 4; }
 
 	// Build hotkeys
 	if (e.key === "q") { hotkeyBuild(ORBITAL_TYPE.SATELLITE, undefined); }
@@ -195,7 +197,7 @@ function render() {
 		ctx.setTransform(1, 0, 0, 1, centerX, centerY);
 		View.reset();
 		Gui.render();
-		drawDebug();
+		// drawDebug();
 
 	}
 }
