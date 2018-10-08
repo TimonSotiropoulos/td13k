@@ -359,4 +359,6 @@ function drawDebug() {
 	ctx.fillText("view tilt: " + View.tilt, 20, 200+220);
 
 	ctx.fillText("enemies: " + EnemyShip.allInstances.length, 20, 200+260);
+	
+	ctx.fillText("Tick Length: " + tickLength, 20, 200+300);
 }

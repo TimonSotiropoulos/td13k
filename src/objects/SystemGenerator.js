@@ -1,11 +1,11 @@
 var SystemGenerator = (function() {
 
 	// Parameters.
-	var minPlanets = 2;
+	var minPlanets = 5;
 	var maxPlanets = 5;
-	var minDistance = 500;
-	var maxDistance = 1000;
-	var minSize = 20;
+	var minDistance = 400;
+	var maxDistance = 700;
+	var minSize = 25;
 	var maxSize = 50;
 
 	// Setup.
@@ -27,7 +27,7 @@ var SystemGenerator = (function() {
 
 		// Generate Planets.
 		var numberOfPlanets = minPlanets + ~~(Math.random() * planetRange);
-		var dist = 1000;
+		var dist = 500;
 		for (var n=0; n<numberOfPlanets; n++) {
 
 			var col = getHSL(-1, 39, 62);
@@ -54,10 +54,10 @@ var SystemGenerator = (function() {
 		}
 
 		// Place base.
-		Base.create(planets[0]);
-		Orbital.miningStation(planets[0], 100, TAU * 0.33);
-		Orbital.miningStation(planets[0], 100, TAU * 0.66);
-		Orbital.miningStation(planets[0], 100, TAU * 0.99);
+		Base.create(planets[1]);
+		Orbital.miningStation(planets[1], 100, TAU * 0.33);
+		Orbital.miningStation(planets[1], 100, TAU * 0.66);
+		Orbital.miningStation(planets[1], 100, TAU * 0.99);
 
 		//
 		return {

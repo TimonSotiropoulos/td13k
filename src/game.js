@@ -3,6 +3,10 @@ var starSystem;
 var gameState = GAME_STATE.LOADING;
 var maxDistance = 64;
 
+const GAME_SPEED_FAST = 120;
+const GAME_SPEED_NORMAL = 60;
+const GAME_SPEED_SLOW = 30;
+
 // Disables right click context menu.
 window.addEventListener("contextmenu", function(e) {
 	e.preventDefault();
@@ -11,8 +15,9 @@ window.addEventListener("contextmenu", function(e) {
 //
 Settings.init();
 
-// Pause the game.
+
 document.addEventListener("keypress", function(e) {
+	// Pause the game.
 	if (e.key === " ") {
 		Tutorial.complete(TUTORIAL_EVENT.PAUSE);
 		if (gameState === GAME_STATE.PAUSED) {
@@ -20,6 +25,23 @@ document.addEventListener("keypress", function(e) {
 		} else {
 			gameState = GAME_STATE.PAUSED;
 		}
+	}
+
+	console.log("WHAT IS THIS??");
+	// Set Game speed to slow.
+	if (e.key === "1") {
+		console.log("HERE WE GO");
+		tickLength = 1000 / GAME_SPEED_SLOW;
+	}
+
+	// Set Game speed to slow.
+	if (e.key === "2") {
+		tickLength = 1000 / GAME_SPEED_NORMAL;
+	}
+
+	// Set Game speed to slow.
+	if (e.key === "3") {
+		tickLength = 1000 / GAME_SPEED_FAST;
 	}
 });
 
@@ -42,6 +64,8 @@ var Game = {
 	}
 
 }
+
+
 
 // Update game.
 var lastTick = performance.now();
@@ -156,7 +180,7 @@ function render() {
 		ctx.setTransform(1, 0, 0, 1, centerX, centerY);
 		View.reset();
 		Gui.render();
-		//drawDebug();
+		drawDebug();
 
 	}
 }

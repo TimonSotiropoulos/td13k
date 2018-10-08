@@ -22,7 +22,7 @@ var WaveManager = (function() {
 	function init() {
 		currentWave = 0;
 		spawnCount = 30;
-		cooldown = 60;
+		cooldown = 5;
 		timer = cooldown * 60;
 	}
 
@@ -40,8 +40,8 @@ var WaveManager = (function() {
 		if (!timer--) {
 			spawn();
 			currentWave++;
-			cooldown = Math.max(cooldown-2, 2);
-			spawnCount += 30;
+			cooldown = Math.max(cooldown-1, 15);
+			spawnCount += 15;
 			timer = cooldown * 60;
 
 			var i = ~~(Math.random()*speechFlavor.length);
