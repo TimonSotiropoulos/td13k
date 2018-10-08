@@ -3,6 +3,7 @@ var starSystem;
 var gameState = GAME_STATE.LOADING;
 var maxDistance = 64;
 
+const GAME_SPEED_SUPERMAN = 180;
 const GAME_SPEED_FAST = 120;
 const GAME_SPEED_NORMAL = 60;
 const GAME_SPEED_SLOW = 30;
@@ -27,23 +28,37 @@ document.addEventListener("keypress", function(e) {
 		}
 	}
 
-	console.log("WHAT IS THIS??");
-	// Set Game speed to slow.
-	if (e.key === "1") {
-		console.log("HERE WE GO");
-		tickLength = 1000 / GAME_SPEED_SLOW;
-	}
+	// Game Speed Settings
+	if (e.key === "1") { tickLength = 1000 / GAME_SPEED_SLOW; }
+	if (e.key === "2") { tickLength = 1000 / GAME_SPEED_NORMAL; }
+	if (e.key === "3") { tickLength = 1000 / GAME_SPEED_FAST;}
+	if (e.key === "3") { tickLength = 1000 / GAME_SPEED_SUPERMAN;}
 
-	// Set Game speed to slow.
-	if (e.key === "2") {
-		tickLength = 1000 / GAME_SPEED_NORMAL;
-	}
+	// Build hotkeys
+	if (e.key === "q") { hotkeyBuild(ORBITAL_TYPE.SATELLITE, undefined); }
+	if (e.key === "w") { hotkeyBuild(ORBITAL_TYPE.MINING, undefined); }
+	if (e.key === "e") { hotkeyBuild(ORBITAL_TYPE.DEFENSE, ORBITAL_MODULE_TYPE.LASER); }
+	if (e.key === "r") { hotkeyBuild(ORBITAL_TYPE.DEFENSE, ORBITAL_MODULE_TYPE.BEAM); }
+	if (e.key === "t") { hotkeyBuild(ORBITAL_TYPE.DEFENSE, ORBITAL_MODULE_TYPE.ROCKET); }
+	if (e.key === "y") { hotkeyBuild(ORBITAL_TYPE.DEFENSE, ORBITAL_MODULE_TYPE.EMP); }
+	if (e.key === "u") { hotkeyBuild(ORBITAL_TYPE.DEFENSE, ORBITAL_MODULE_TYPE.LIGHTNING); }
 
-	// Set Game speed to slow.
-	if (e.key === "3") {
-		tickLength = 1000 / GAME_SPEED_FAST;
-	}
+	// Cancel Build hotkey
+	if (e.key === 'c') { Build.cancelBlueprint(); }
+
 });
+
+var hotkeyBuild = function(type, modType) {
+	var cost = Orbital.getCost(type, modType);
+	if (Base.minerals <= cost) {
+		return false;
+	} else {
+		var name = Orbital.getName(type, modType);
+		speak("Select an area to build the " + name);
+		Build.createBlueprint(type, modType, cost);
+		return false;
+	}
+}
 
 var Game = {
 

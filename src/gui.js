@@ -258,7 +258,8 @@ var Gui = (function() {
 		render: render,
 		addSubtitles: addSubtitles,
 		setSelectionTarget: setSelectionTarget,
-		setTooltip: setTooltip
+		setTooltip: setTooltip,
+		buildOrbital: buildOrbital
 	}
 
 })();

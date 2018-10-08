@@ -107,10 +107,15 @@ var Build = (function() {
 		cost = c;
 	}
 
+	function cancelBlueprint() {
+		pending = false;
+	}
+
 	// Export.
 	return {
 		get pending() { return pending; },
 		createBlueprint: createBlueprint,
+		cancelBlueprint: cancelBlueprint,
 		update: update,
 		render: render,
 		init: init,
