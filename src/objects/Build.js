@@ -109,6 +109,10 @@ var Build = (function() {
 
 	function cancelBlueprint() {
 		pending = false;
+		what = undefined;
+		module = undefined;
+		cost = undefined;
+		on = null;
 	}
 
 	// Export.

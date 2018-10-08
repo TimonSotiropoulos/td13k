@@ -103,7 +103,8 @@ var Orbital = (function() {
 
 			// Gain minerals. Only when online.
 			if (t.online) {
-				Base.minerals += Base.mineRate * clamp(1-distance/500, 0.1, 1);
+				var harvest = clamp(1-(distance-100)/500, 0.1, 1);
+				Base.minerals += Base.mineRate * harvest;
 			}
 
 		});
@@ -124,7 +125,8 @@ var Orbital = (function() {
 
 			// Gain energy. Only when online.
 			if (t.online) {
-				Base.energy += Base.energyRate * clamp(1-distance/500, 0.1, 1);
+				var harvest = clamp(1-(distance-100)/500, 0.1, 1);
+				Base.energy += Base.energyRate * harvest;
 			}
 
 		});

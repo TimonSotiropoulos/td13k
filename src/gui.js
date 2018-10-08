@@ -109,6 +109,7 @@ var Gui = (function() {
 		ctx.font = "small-caps 500 12px monospace";
 		ctx.fillText("FPS: " + Fps.fps, 10, 26);
 		ctx.fillText("Game Speed: " + gameSpeed, 10, 46);
+		ctx.fillText("Enemies: " + EnemyShip.allInstances.length, 10, 66);
 
 		// Pause status.
 		var offset = gameState === GAME_STATE.PAUSED ? 0 : 80;

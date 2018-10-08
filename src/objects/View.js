@@ -46,10 +46,10 @@ var View = (function() {
 
 		// Pan with keyboard.
 		var spd = 50;
-		if (keysDown["ARROWUP"] || keysDown["W"]) yTarget -= spd;
-		if (keysDown["ARROWDOWN"] || keysDown["S"]) yTarget += spd;
-		if (keysDown["ARROWLEFT"] || keysDown["A"]) xTarget -= spd;
-		if (keysDown["ARROWRIGHT"] || keysDown["D"]) xTarget += spd;
+		if (keysDown["ARROWUP"]) yTarget -= spd;
+		if (keysDown["ARROWDOWN"]) yTarget += spd;
+		if (keysDown["ARROWLEFT"]) xTarget -= spd;
+		if (keysDown["ARROWRIGHT"]) xTarget += spd;
 
 		// Set anchors for panning.
 		if (Mouse.click) {

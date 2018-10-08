@@ -40,7 +40,7 @@ var WaveManager = (function() {
 		if (!timer--) {
 			spawn();
 			currentWave++;
-			cooldown = Math.max(cooldown-1, 15);
+			cooldown = Math.max(cooldown-1, 2);
 			spawnCount += 15;
 			timer = cooldown * 60;
 
